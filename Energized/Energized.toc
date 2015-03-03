@@ -1,5 +1,5 @@
 ## Author: Allara
-## Interface: 50400
+## Interface: 60100
 ## Notes: Tells you if you're buffed
 ## Title: Energized
 ## Version: 1.0
@@ -7,7 +7,7 @@
 ## OptionalDeps: Ace3,LibDualSpec-1.0,LibQTip-1.0,LibDBIcon-1.0,LibGroupInSpecT
 ## LoadManagers: AddonLoader
 ## X-LoadOn-Always: delayed
-## X-Curse-Packaged-Version: r178-release
+## X-Curse-Packaged-Version: r180-release
 ## X-Curse-Project-Name: Energized
 ## X-Curse-Project-ID: energized
 ## X-Curse-Repository-ID: wow/energized/mainline

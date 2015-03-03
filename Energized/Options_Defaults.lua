@@ -121,15 +121,13 @@ function E:PrepareDefaults()
 		},
 	})
 
-	-- Flask/Elixir
+	-- Flasks
 	table.insert(self.defaults.profile.groups, {
-		name = L["Flask/Elixir"],
+		name = L["Flasks"],
 		report = false,
 		pet = "NONE",
-		items = {--                                    |Cata starts here                                          |MoP starts here
-			{ id = "flask", type = "CONSUMABLE", value = "\"92679\",\"94160\",\"79469\",\"79472\",\"79470\",\"79471\",\"105696\",\"105689\",\"105694\",\"105691\",\"105693\",\"127230\"", partyFormat = "ANY_RAID", enableSolo = false },
-			--                                            |Cata starts here                                                               |MoP starts here
-			{ id = "elixir", type = "CONSUMABLE", value = "\"79480\",\"79481\",\"79632\",\"79477\",\"79635\",\"79474\",\"79468\",\"79631\",\"105688\",\"105682\",\"105681\",\"105683\",\"105684\",\"105686\",\"105685\",\"105687\"", partyFormat = "ANY_RAID", enableSolo = false },
+		items = {--                                         200 AGI |  200 INT |  200 STA |  200 STR |  250 AGI |  250 INT |  250 STA |  250 STR
+			{ id = "flask", type = "CONSUMABLE", value = "\"156073\",\"156070\",\"156077\",\"156071\",\"156064\",\"156079\",\"156084\",\"156080\"", partyFormat = "ANY_RAID", enableSolo = false },
 		},
 	})
 
@@ -138,12 +136,16 @@ function E:PrepareDefaults()
 		name = L["Stats"],
 		items = {
 			{ type = "BUFF", value = "\"1126\"", class = "DRUID" }, -- Mark of the Wild
-			{ type = "BUFF", value = "\"115921\"", class = "MONK" }, -- Legacy of the Emperor
+			{ type = "BUFF", value = "\"116781\"", class = "MONK" talentTree=1 }, -- Legacy of the White Tiger (Brewmaster)
+			{ type = "BUFF", value = "\"115921\"", class = "MONK" talentTree=2 }, -- Legacy of the Emperor (Mistweaver)
+			{ type = "BUFF", value = "\"116781\"", class = "MONK" talentTree=3 }, -- Legacy of the White Tiger (Windwalker)
 			{ id = "BoK", type = "BUFF", value = "\"20217\"", class = "PALADIN", priorityMe = "1" }, -- Blessing of Kings
+			{ type = "BUFF", value = "\"160206\"", class = "HUNTER" }, -- Lone Wolf: Power of the Primates
+			{ type = "BUFF", value = "\"90363\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", petFamily = L["Shale Spider"], talentTree=1 }, -- Embrace of the Shale Spider (Shale Spider, Beast Mastery)
+			{ type = "BUFF", value = "\"160077\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", petFamily = L["Worm"], talentTree=1 }, -- Strength of the Earth (Worm, Beast Mastery)
+			{ type = "BUFF", value = "\"159988\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", petFamily = L["Gorilla"] }, -- Blessing of Kongs (Gorilla)
+			{ type = "BUFF", value = "\"160017\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", petFamily = L["Dog"] }, -- Bark of the Wild (Dog)
 
-			{ type = "CONSUMABLE", value = "\"69378\"", partyFormat = "ANY_RAID", enableSolo = false }, -- Blessing of Forgotten Kings
-
-			{ type = "BUFF", value = "\"90363\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", petFamily = L["Shale Spider"] }, -- Embrace of the Shale Spider (BM/Shale Spider)
 		},
 	})
 
@@ -153,11 +155,12 @@ function E:PrepareDefaults()
 		items = {
 			{ type = "BUFF", value = "\"21562\"", class = "PRIEST" }, -- Power Word: Fortitude
 			{ type = "BUFF", value = "\"469\"", class = "WARRIOR", warn = 15, priorityMe = "2" }, -- Commanding Shout
-
-			{ type = "CONSUMABLE", value = "\"111922\"", partyFormat = "ANY_RAID", enableSolo = false }, -- Runescroll of Fortitude III
-
-			{ type = "BUFF", value = "\"103127\"", class = "WARLOCK", fromPet = true, mountMode = "NOT_MOUNTED", petFamily = L["Imp"] }, -- Blood Pact (Imp)
-			{ type = "BUFF", value = "\"90364\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", petFamily = L["Silithid"] }, -- Qiraji Fortitude (BM/Silithid)
+			{ type = "BUFF", value = "\"166928\"", class = "WARLOCK" }, -- Blood Pact
+			{ type = "BUFF", value = "\"160199\"", class = "HUNTER" }, -- Lone Wolf: Fortitude of the Bear
+			{ type = "BUFF", value = "\"90364\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", petFamily = L["Silithid"], talentTree=1 }, -- Qiraji Fortitude (Silithid, Beast Mastery)
+			{ type = "BUFF", value = "\"160003\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", petFamily = L["Rylak"], talentTree=1 }, -- Savage Vigor (Rylak, Beast Mastery)
+			{ type = "BUFF", value = "\"160014\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", petFamily = L["Goat"] }, -- Sturdiness (Goat)
+			{ type = "BUFF", value = "\"50256\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", petFamily = L["Bear"] }, -- Invigorating Roar (Bear)
 		},
 	})
 
@@ -176,10 +179,11 @@ function E:PrepareDefaults()
 		name = L["Spell Power"],
 		items = {
 			{ id = "ai", type = "BUFF", value = "\"1459\",\"61316\"", class = "MAGE" }, -- Arcane Brilliance, Dalaran Brilliance
-			{ type = "BUFF", value = "\"77747\"", class = "SHAMAN" }, -- Burning Wrath
 			{ type = "BUFF", value = "\"109773\"", class = "WARLOCK" }, -- Dark Intent
-
-			{ type = "BUFF", value = "\"126309\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Waterstrider"] }, -- Still Water (BM/Waterstrider)
+			{ type = "BUFF", value = "\"160205\"", class = "HUNTER" }, -- Lone Wolf: Wisdom of the Serpent
+			{ type = "BUFF", value = "\"90364\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Waterstrider"], talentTree=1 }, -- Still Water (Waterstrider, Beast Mastery)
+			{ type = "BUFF", value = "\"126309\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Silithid"], talentTree=1 }, -- Qiraji Fortitude (Silithid, Beast Mastery)
+			{ type = "BUFF", value = "\"128433\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Serpent"] }, -- Serpent's Cunning (Serpent)
 		},
 	})
 
@@ -190,20 +194,14 @@ function E:PrepareDefaults()
 			{ id = "haste", type = "BUFF", value = "\"55610\"", class = "DEATHKNIGHT", talentTree = 2 }, -- Unholy Aura (Frost)
 			{ type = "BUFF", value = "\"55610\"", class = "DEATHKNIGHT", talentTree = 3 }, -- Unholy Aura (Unholy)
 			{ type = "BUFF", value = "\"113742\"", class = "ROGUE" }, -- Swiftblade's Cunning
-			{ type = "BUFF", value = "\"30809\"", class = "SHAMAN", talentTree = 2 }, -- Unleashed Rage
-
+			{ type = "BUFF", value = "\"116956\"", class = "SHAMAN" }, -- Grace of Air
+			{ type = "BUFF", value = "\"49868\"", class = "PRIEST", talentTree = 3 }, -- Mind Quickening (Shadow)
+			{ type = "BUFF", value = "\"160203\"", class = "HUNTER" }, -- Lone Wolf: Haste of the Hyena
 			{ type = "BUFF", value = "\"128432\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Hyena"] }, -- Cackling Houl (Hyena)
-			{ type = "BUFF", value = "\"128433\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Serpent"] }, -- Serpent's Swiftness (Serpent)
-		},
-	})
-
-	-- Spell Haste
-	table.insert(self.defaults.profile.groups, {
-		name = L["Spell Haste"],
-		items = {
-			{ id = "spellhaste", type = "BUFF", value = "\"24907\"", class = "DRUID", talentTree = 1 }, -- Moonkin Aura
-			{ type = "BUFF", value = "\"49868\"", class = "PRIEST", talentTree = 3 }, -- Mind Quickening
-			{ type = "BUFF", value = "\"51470\"", class = "SHAMAN", talentTree = 1 }, -- Elemental Oath
+			{ type = "BUFF", value = "\"135678\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Sporebat"] }, -- Energizing Spores (Sporebat)
+			{ type = "BUFF", value = "\"160074\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Wasp"] }, -- Speed of the Swarm (Wasp)
+			{ type = "BUFF", value = "\"160003\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Rylak"], talentTree=1 }, -- Savage Vigor (Rylak, Beast Mastery)
+			
 		},
 	})
 
@@ -214,13 +212,16 @@ function E:PrepareDefaults()
 			{ id = "crit", type = "BUFF", value = "\"1459\",\"61316\"", class = "MAGE" }, -- Arcane Brilliance, Dalaran Brilliance
 			{ type = "BUFF", value = "\"17007\"", class = "DRUID", talentTree = 2 }, -- Leader of the Pack (Feral)
 			{ type = "BUFF", value = "\"17007\"", class = "DRUID", talentTree = 3 }, -- Leader of the Pack (Guardian)
-			{ type = "BUFF", value = "\"116781\"", class = "MONK", talentTree = 3 }, -- Legacy of the White Tiger
-
-			{ type = "BUFF", value = "\"97229\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Hydra"] }, -- Bellowing Roar (Hydra)
+			{ type = "BUFF", value = "\"116781\"", class = "MONK" talentTree=1 }, -- Legacy of the White Tiger (Brewmaster)
+			{ type = "BUFF", value = "\"116781\"", class = "MONK" talentTree=3 }, -- Legacy of the White Tiger (Windwalker)
+			{ type = "BUFF", value = "\"160200\"", class = "HUNTER" }, -- Lone Wolf: Ferocity of the Raptor
+			{ type = "BUFF", value = "\"160052\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Raptor"] }, -- Strength of the Pack (Raptor)
 			{ type = "BUFF", value = "\"24604\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Wolf"] }, -- Furious Howl (Wolf)
-			{ type = "BUFF", value = "\"90309\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Devilsaur"] }, -- Terrifying Roar (BM/Devilsaur)
-			{ type = "BUFF", value = "\"126373\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Quilen"] }, -- Fearless Roar (BM/Quilen)
-			{ type = "BUFF", value = "\"126309\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Waterstrider"] }, -- Still Water (BM/Waterstrider)
+			{ type = "BUFF", value = "\"90309\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Devilsaur"], talentTree=1 }, -- Terrifying Roar (Devilsaur, Beast Mastery)
+			{ type = "BUFF", value = "\"126373\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Quilen"], talentTree=1 }, -- Fearless Roar (Quilen, Beast Mastery)
+			{ type = "BUFF", value = "\"126309\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Waterstrider"], talentTree=1 }, -- Still Water (Waterstrider, Beast Mastery)
+			{ type = "BUFF", value = "\"90363\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", petFamily = L["Shale Spider"], talentTree=1 }, -- Embrace of the Shale Spider (Shale Spider, Beast Mastery)
+			
 		},
 	})
 
@@ -230,9 +231,54 @@ function E:PrepareDefaults()
 		items = {
 			{ id = "crit", type = "BUFF", value = "\"19740\"", class = "PALADIN", priorityMe = "2" }, -- Blessing of Might
 			{ type = "BUFF", value = "\"116956\"", class = "SHAMAN" }, -- Grace of Air
+			{ type = "BUFF", value = "\"155522\"", class = "DEATHKNIGHT", talentTree = 1 }, -- Power of the Grave (Blood)
+			{ type = "BUFF", value = "\"24907\"", class = "DRUID", talentTree = 1 }, -- Moonkin Aura (Balance)
+			{ type = "BUFF", value = "\"160198\"", class = "HUNTER" }, -- Lone Wolf: Grace of the Cat
+			{ type = "BUFF", value = "\"93435\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Cat"] }, -- Roar of Courage (Cat),
+			{ type = "BUFF", value = "\"160039\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Hydra"] }, -- Keen Senses (Hydra)
+			{ type = "BUFF", value = "\"160073\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Tallstrider"] }, -- Plainswalking (Tallstrider)
+			{ type = "BUFF", value = "\"128997\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Spirit Beast"], talentTree=1 }, -- Spirit Beast Blessing (Spirit Beast, Beast Mastery)
+		},
+	})
 
-			{ type = "BUFF", value = "\"93435\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Cat"] }, -- Roar of Courage (Cat)
-			{ type = "BUFF", value = "\"128997\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Spirit Beast"] }, -- Spirit Beast Blessing (BM/Spirit Beast)
+ -- Multistrike
+	table.insert(self.defaults.profile.groups, {
+		name = L["Multistrike"],
+		items = {
+			{ id = "multi", type = "BUFF", value = "\"109773\"", class = "WARLOCK", priorityMe = "1" }, -- Dark Intent
+			{ type = "BUFF", value = "\"49868\"", class = "PRIEST", talentTree = 3 }, -- Mind Quickening (Shadow)
+			{ type = "BUFF", value = "\"166916\"", class = "MONK" talentTree=3 }, -- Windflurry (Windwalker)
+			{ type = "BUFF", value = "\"113742\"", class = "ROGUE" }, -- Swiftblade's Cunning
+			{ type = "BUFF", value = "\"172968\"", class = "HUNTER" }, -- Lone Wolf: Quickness of the Dragonhawk
+			{ type = "BUFF", value = "\"50519\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Bat"] }, -- Sonic Focus (Bat)
+			{ type = "BUFF", value = "\"34889\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Dragonhawk"] }, -- Spry Attacks (Dragonhawk)
+			{ type = "BUFF", value = "\"24844\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Wind Serpent"] }, -- Breath of the Winds (Wind Serpent)
+			{ type = "BUFF", value = "\"57386\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Clefthoof"], talentTree=1 }, -- Wild Strength (Clefthoof, Beast Mastery)
+			{ type = "BUFF", value = "\"58604\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Core Hound"], talentTree=1 }, -- Double Bite (Core Hound, Beast Mastery)
+
+		},
+	})
+
+ -- Versatility
+	table.insert(self.defaults.profile.groups, {
+		name = L["Versatility"],
+		items = {
+
+			{ type = "BUFF", value = "\"55610\"", class = "DEATHKNIGHT", talentTree = 2 }, -- Unholy Aura (Frost)
+			{ type = "BUFF", value = "\"55610\"", class = "DEATHKNIGHT", talentTree = 3 }, -- Unholy Aura (Unholy)
+			{ type = "BUFF", value = "\"1126\"", class = "DRUID" }, -- Mark of the Wild
+			{ type = "BUFF", value = "\"167187\"", class = "PALADIN", talentTree = 3 }, -- Sanctity Aura (Retribution)
+			{ type = "BUFF", value = "\"167187\"", class = "WARRIOR", talentTree = 1 }, -- Inspiring Presence (Fury)
+			{ type = "BUFF", value = "\"167187\"", class = "WARRIOR", talentTree = 2 }, -- Inspiring Presence (Arms)
+			{ type = "BUFF", value = "\"172967\"", class = "HUNTER" }, -- Lone Wolf: Versatility of the Ravager
+			{ type = "BUFF", value = "\"159735\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Bird of Prey"] }, -- Tenacity (Bird of Prey)
+			{ type = "BUFF", value = "\"35290\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Boar"] }, -- Indomitable (Boar)
+			{ type = "BUFF", value = "\"160045\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Porcupine"] }, -- Defensive Quills (Porcupine)
+			{ type = "BUFF", value = "\"50518\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Ravager"] }, -- Chitinous Armor (Ravager)
+			{ type = "BUFF", value = "\"173035\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", warn = 15, petFamily = L["Stag"] }, -- Grace (Stag)
+			{ type = "BUFF", value = "\"57386\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", petFamily = L["Clefthoof"], talentTree=1 }, -- Wild Strength (Clefthoof, Beast Mastery)
+			{ type = "BUFF", value = "\"160077\"", class = "HUNTER", fromPet = true, mountMode = "NOT_MOUNTED", petFamily = L["Worm"], talentTree=1 }, -- Strength of the Earth (Worm, Beast Mastery)
+
 		},
 	})
 

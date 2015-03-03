@@ -1,10 +1,10 @@
 Energized = LibStub("AceAddon-3.0"):NewAddon("Energized", "AceConsole-3.0", "AceEvent-3.0", "AceTimer-3.0")
-Energized.MINOR_VERSION = tonumber(("$Revision: 177 $"):match("%d+"))
-local FORCE_PROFILE_RESET_BEFORE_REVISION = 164 -- Set this to one higher than the Revision on the line above this
+Energized.MINOR_VERSION = tonumber(("$Revision: 180 $"):match("%d+"))
+local FORCE_PROFILE_RESET_BEFORE_REVISION = 180 -- Set this to one higher than the Revision on the line above this
 local L = LibStub("AceLocale-3.0"):GetLocale("Energized")
 local E = Energized
 local qtip = LibStub("LibQTip-1.0")
-local talents = LibStub("LibGroupInSpecT-1.0")
+local talents = LibStub("LibGroupInSpecT-1.1")
 E.talents = talents
 local ldb = LibStub:GetLibrary("LibDataBroker-1.1")
 local dbicon = LibStub("LibDBIcon-1.0")
@@ -1264,6 +1264,15 @@ do
    local shouldHavePetNow = E.shouldHavePet
    if E.class == "WARLOCK" then -- Grimoire of Sacrifice talent eliminates pet requirement for warlocks
     local spellName = strupper((GetSpellInfo(108503)))
+    for k, v in pairs(aura.me.spellName) do
+     if v == spellName then
+      shouldHavePetNow = false
+      break
+     end
+    end
+   end
+   if E.class == "HUNTER" then -- Lone Wolf talent eliminates pet requirement for hunters
+    local spellName = strupper((GetSpellInfo(155228)))
     for k, v in pairs(aura.me.spellName) do
      if v == spellName then
       shouldHavePetNow = false
