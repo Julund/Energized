@@ -1,0 +1,15 @@
+## Author: Allara
+## Interface: 50400
+## Notes: Energized configuration. Use AddonLoader to load this on demand.
+## Title: Energized [|caaedc99fOptions|r]
+## Dependencies: Energized
+## X-Part-Of: Energized
+## LoadManagers: AddonLoader
+## X-LoadOn-Slash: /energized, /energize
+## X-LoadOn-InterfaceOptions: Energized
+## X-Curse-Packaged-Version: r178-release
+## X-Curse-Project-Name: Energized
+## X-Curse-Project-ID: energized
+## X-Curse-Repository-ID: wow/energized/mainline
+
+Options.lua
